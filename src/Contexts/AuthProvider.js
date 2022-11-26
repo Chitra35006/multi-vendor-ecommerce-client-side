@@ -26,13 +26,11 @@ const AuthProvider = ({children}) => {
         setLoading(true);
         return signOut(auth);
     }
-     const updateUser = (userInfo)=>{
-        return updateProfile(user,userInfo);
-     }
-    
-
+    const updateUser = (userInfo)=>{
+        return updateProfile(auth.currentUser,userInfo);
+    }
     useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth,currentUser =>{
+        const unsubscribe = onAuthStateChanged(auth, currentUser =>{
             console.log('user ovserving');
             setUser(currentUser);
             setLoading(false);

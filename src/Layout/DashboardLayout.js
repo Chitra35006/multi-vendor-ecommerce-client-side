@@ -17,17 +17,64 @@ const DashBoardLayout = () => {
             <ul className="menu p-4 w-80 text-base-content">
                 {/* <!-- Sidebar content here --> */}
                 <li>
-                <Link to='/dashboard'>My Order</Link>
+                <Link to='/dashboard'>Add Offer</Link>
+                </li>
+
+                {/* //admin */}
+                <li>
+                <Link to='/dashboard'>All Users</Link>
                 </li>
                 <li>
-                <Link to='/dashboard/allusers'>All Users</Link>
+                <Link to='/dashboard/b2busers'>B2B Users</Link>
                 </li>
                  <li>
-                <Link to='/dashboard/add-doctor'>Add A Doctor</Link>
+                <Link to='/dashboard/b2cSeller'>B2C Seller</Link>
+                </li>
+                <li>
+                <Link to='/dashboard/b2cBuyer'>B2B Buyer</Link>
+                </li>
+
+                
+                {/* b2busers */}
+                <li>
+                <Link to='/dashboard/b2bMyorder'>My Orders</Link>
+                </li>
+                <li>
+                <Link to='/dashboard/b2bAddproduct'>Add Product</Link>
                 </li>
                  <li>
-                <Link to='/dashboard/managedoctors'>Manage Doctors</Link>
+                <Link to='/dashboard/b2bCustomerorder'>Customer Order</Link>
                 </li>
+                 <li>
+                <Link to='/dashboard/b2bmyShop'>My Shop</Link>
+                </li>
+                
+
+
+                {/* b2c seller */}
+                <li>
+                <Link to='/dashboard/b2cCustomerOrders'>Customer Order</Link>
+                </li>
+                <li>
+                <Link to='/dashboard/b2cAddProducts'>Add Product</Link>
+                </li>
+                 <li>
+                <Link to='/dashboard/b2cMyShop'>My Shop</Link>
+                </li>
+
+                {/* b2c buyer */}
+                <li>
+                <Link to='/dashboard/b2cMyOrders'>My Order</Link>
+                </li>
+                <li>
+                <Link to='/dashboard/b2cLikedshop'>Liked Shop</Link>
+                </li>
+                 <li>
+                <Link to='/dashboard/b2cMyoffers'>My Offers</Link>
+                </li>
+
+
+
             </ul>
             </div>
       </div>
