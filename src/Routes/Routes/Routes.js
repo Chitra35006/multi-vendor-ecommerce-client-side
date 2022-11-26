@@ -12,6 +12,8 @@ import Offer from "../../Pages/Offer";
 import B2bUsers from "../../Pages/Admin/B2bUsers";
 import B2cSeller from "../../Pages/Admin/B2cSeller";
 import B2cBuyer from "../../Pages/Admin/B2cBuyer";
+import AddProducts from "../../Pages/B2B/AddProducts";
+import BSaddProducts from "../../Pages/B2C/Seller/BSaddProducts";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -59,6 +61,14 @@ const router = createBrowserRouter([
                 path:'/dashboard/b2cBuyer',
                 element:<B2cBuyer></B2cBuyer>
             },
+            {
+                path:'/dashboard/b2bAddproduct',
+                element:<AddProducts></AddProducts>
+            },
+            {
+                path:'/dashboard/b2cAddProducts',
+                element:<BSaddProducts></BSaddProducts>
+            }
         ]
     },
     {
