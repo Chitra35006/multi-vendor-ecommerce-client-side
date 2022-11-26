@@ -5,6 +5,7 @@ import Home from "../../Pages/Home/Home/Home"
 import SignIn from "../../Pages/SignIn/SignIn";
 import SignUp from "../../Pages/SignUp/SignUp";
 import FOfRoute from "../FOfRoute/FOfRoute";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -35,7 +36,7 @@ const router = createBrowserRouter([
     },
     {
         path:'/dashboard',
-        element:<DashBoard></DashBoard>
+        element:<PrivateRoute><DashBoard></DashBoard></PrivateRoute>
     }
 ])
 export default router;
