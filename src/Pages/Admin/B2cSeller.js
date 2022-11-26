@@ -1,18 +1,18 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 
-const B2bUsers = () => {
+const B2cSeller = () => {
     const { data: users = []} = useQuery({
         queryKey: ["users"],
         queryFn: async () => {
-          const res = await fetch("http://localhost:5000/users/b2b");
+          const res = await fetch("http://localhost:5000/users/b2cSeller");
           const data = await res.json();
           return data;
         },
       });
     return (
         <div>
-        <h2 className="text-3xl mt-5 mb-5">B2B Users</h2>
+        <h2 className="text-3xl mt-5 mb-5">B2C Seller</h2>
         <div className="overflow-x-auto">
           <table className="table w-full">
             <thead>
@@ -37,4 +37,4 @@ const B2bUsers = () => {
     );
 };
 
-export default B2bUsers;
+export default B2cSeller;

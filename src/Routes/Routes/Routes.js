@@ -9,6 +9,9 @@ import DashboardLayout from "../../Layout/DashboardLayout";
 import AllUsers from "../../Pages/Admin/AllUsers";
 import AdminRoute from '../AdminRoute';
 import Offer from "../../Pages/Offer";
+import B2bUsers from "../../Pages/Admin/B2bUsers";
+import B2cSeller from "../../Pages/Admin/B2cSeller";
+import B2cBuyer from "../../Pages/Admin/B2cBuyer";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -21,10 +24,6 @@ const router = createBrowserRouter([
             {
                 path:'home',
                 element:<Home></Home>
-            },
-            {
-                path:'/*',
-                element:<FOfRoute></FOfRoute>
             },
             {
                 path:'/signin',
@@ -47,8 +46,24 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/allusers',
                 element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
-            }
+            },
+            {
+                path:'/dashboard/b2busers',
+                element:<B2bUsers></B2bUsers>
+            },
+            {
+                path:'/dashboard/b2cSeller',
+                element:<B2cSeller></B2cSeller>
+            },
+            {
+                path:'/dashboard/b2cBuyer',
+                element:<B2cBuyer></B2cBuyer>
+            },
         ]
+    },
+    {
+        path:'/*',
+        element:<FOfRoute></FOfRoute>
     }
    
 ])
