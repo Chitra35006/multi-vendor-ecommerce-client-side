@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 import "./SignIn.css";
 const SignIn = () => {
   const {
@@ -7,7 +8,7 @@ const SignIn = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
-  const handleAddDoctor = (data) => {
+  const handleSignIn = (data) => {
     console.log(data);
   };
 
@@ -15,7 +16,7 @@ const SignIn = () => {
     <div className="h-[600px] flex justify-center items-center mt-5 login-div">
       <div className="w-96 p-7">
         <h2 className="text-3xl text-center">SignIn</h2>
-        <form onSubmit={handleSubmit(handleAddDoctor)}>
+        <form onSubmit={handleSubmit(handleSignIn)}>
           <div className="form-control w-full max-w-xs">
             <label className="label">
               <span className="label-text">Email</span>
@@ -62,6 +63,8 @@ const SignIn = () => {
             type="submit"
           />
         </form>
+        <p className="mt-2 text-center">Forgot Password?<Link className='text-secondary' to="/signup">Click Here</Link></p>
+        <p className="mt-2">Don't have any account? <Link className='text-secondary' to="/signup">Create new Account</Link></p>
       </div>
     </div>
   );
