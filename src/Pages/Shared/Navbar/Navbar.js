@@ -19,9 +19,6 @@ const Navbar = () => {
       <li>
         <Link to="/">Home</Link>
       </li>
-      <li>
-        <Link to="/signup">SignUp</Link>
-      </li>
       {
         user?.uid?
        <>
@@ -32,9 +29,14 @@ const Navbar = () => {
         <button onClick={handleLogout}>Sign Out</button>
       </li>
        </>
-      :<li>
+      :<>
+      <li>
         <Link to="/signin">SignIn</Link>
       </li>
+      <li>
+      <Link to="/signup">SignUp</Link>
+    </li>
+      </>
       }
     </React.Fragment>
   );
