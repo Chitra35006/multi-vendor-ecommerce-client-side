@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Contexts/AuthProvider";
 import "./SignIn.css";
 const SignIn = () => {
   const {
@@ -8,8 +9,22 @@ const SignIn = () => {
     formState: { errors },
     handleSubmit,
   } = useForm();
+
+  const{signIn} = useContext(AuthContext);
+
+  const[loginError,setLoginError] = useState('');
+
   const handleSignIn = (data) => {
-    console.log(data);
+    // console.log(data);
+    signIn(data.email,data.password)
+    .then(result =>{
+      const user = result.user;
+      console.log(user);
+    })
+    .catch(error =>{
+      console.log(error.message);
+      setLoginError(error.message);
+    });
   };
 
   return (
@@ -62,6 +77,9 @@ const SignIn = () => {
             value="Sign In"
             type="submit"
           />
+          <div>
+            {loginError && <p className="text-red-600">{loginError}</p>}
+          </div>
         </form>
         <p className="mt-2 text-center">Forgot Password?<Link className='text-secondary' to="/signup">Click Here</Link></p>
         <p className="mt-2">Don't have any account? <Link className='text-secondary' to="/signup">Create new Account</Link></p>
