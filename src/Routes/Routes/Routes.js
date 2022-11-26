@@ -7,7 +7,8 @@ import FOfRoute from "../FOfRoute/FOfRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import DashboardLayout from "../../Layout/DashboardLayout";
 import AllUsers from "../../Pages/Admin/AllUsers";
-import B2BBuyer from "../../Pages/Admin/B2BBuyer";
+import AdminRoute from '../AdminRoute';
+import Offer from "../../Pages/Offer";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -41,11 +42,11 @@ const router = createBrowserRouter([
         children:[
             {
                 path:'/dashboard',
-                element:<AllUsers></AllUsers>
+                element:<Offer></Offer>
             },
             {
-                path:'/dashboard/b2busers',
-                element:<B2BBuyer></B2BBuyer>
+                path:'/dashboard/allusers',
+                element:<AdminRoute><AllUsers></AllUsers></AdminRoute>
             }
         ]
     }

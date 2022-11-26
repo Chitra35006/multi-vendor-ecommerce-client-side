@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
+import { AuthContext } from '../Contexts/AuthProvider';
+import useAdmin from '../Hooks/useAdmin';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 
+
 const DashBoardLayout = () => {
+    const{user} = useContext(AuthContext);
+    const [isAdmin] = useAdmin(user?.email)
     return (
         <div>
       <Navbar></Navbar>
@@ -21,8 +26,10 @@ const DashBoardLayout = () => {
                 </li>
 
                 {/* //admin */}
+                {
+                    isAdmin && <>
                 <li>
-                <Link to='/dashboard'>All Users</Link>
+                <Link to='/dashboard/allusers'>All Users</Link>
                 </li>
                 <li>
                 <Link to='/dashboard/b2busers'>B2B Users</Link>
@@ -32,7 +39,9 @@ const DashBoardLayout = () => {
                 </li>
                 <li>
                 <Link to='/dashboard/b2cBuyer'>B2B Buyer</Link>
-                </li>
+                </li>  
+                    </>
+                }
 
                 
                 {/* b2busers */}
