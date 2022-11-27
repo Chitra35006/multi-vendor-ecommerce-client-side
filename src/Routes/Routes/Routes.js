@@ -33,6 +33,9 @@ import AllProducts from "../../Pages/B2C/Buyer/AllProducts";
 import Shoe from "../../Pages/B2B/Shoe";
 import Bag from "../../Pages/B2B/Bag";
 import Jackets from "../../Pages/B2B/Jackets";
+import BShoe from "../../Pages/B2C/Buyer/BShoe";
+import BBag from "../../Pages/B2C/Buyer/BBag";
+import BJacket from "../../Pages/B2C/Buyer/BJacket";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -151,6 +154,18 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/b2cProducts',
                 element:<B2cBuyerRoute><AllProducts></AllProducts></B2cBuyerRoute>
+            },
+            {
+                path:'/dashboard/b2cProducts/shoes',
+                element:<B2cBuyerRoute><BShoe></BShoe></B2cBuyerRoute>
+            },
+            {
+                path:'/dashboard/b2cProducts/bags',
+                element:<B2cBuyerRoute><BBag></BBag></B2cBuyerRoute>
+            },
+            {
+                path:'/dashboard/b2cProducts/jackets',
+                element:<B2cBuyerRoute><BJacket></BJacket></B2cBuyerRoute>
             },
 
         ]
