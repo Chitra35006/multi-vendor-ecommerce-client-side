@@ -1,5 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../Contexts/AuthProvider';
+
 
 const AddProducts = () => {
     const {
@@ -7,7 +11,11 @@ const AddProducts = () => {
         formState: { errors },
         handleSubmit,
       } = useForm();
+      const {user} = useContext(AuthContext);
       const imageHostkey = process.env.REACT_APP_imgbb_key;
+
+      const navigate = useNavigate();
+
       const handleAddProducts = (data) => {
         console.log(data);
         const image = data.img[0];
@@ -22,10 +30,35 @@ const AddProducts = () => {
         .then(imgData=>{
             // console.log(imgData);
             if(imgData.success){
-                console.log(imgData.data.url);
+                // console.log(imgData.data.url);
+                const b2bproduct ={
+                  p_details: data.ProductDetails,
+                  p_price: data.price,
+                  p_quantity:data.quantity,
+                  p_category: data.category,
+                  image:imgData.data.url,
+                  email:user?.email
+
+                }
+
+                //product information to the database
+                fetch('http://localhost:5000/b2bProducts',{
+                  method: 'POST',
+                  headers:{
+                      'content-type': 'application/json',
+                      authorization:`bearer${localStorage.getItem('accessToken')}`
+                  },
+                  body: JSON.stringify(b2bproduct)
+              })
+              .then(res => res.json())
+              .then(result =>{
+                  console.log(result)})
+                  toast.success(`${data.category}  added successfully`);
+                  navigate('/dashboard/b2bmyShop')
             }
         })
       };
+
     
     return (
         <div className="w-96 p-7">
@@ -66,7 +99,7 @@ const AddProducts = () => {
           <input
             type="file"
             {...register("img", {
-              required: "Phpto is required",
+              required: "Photo is required",
             })}
             className="input input-bordered w-full max-w-xs"
           />
@@ -74,6 +107,7 @@ const AddProducts = () => {
             <p className="text-red-500">{errors.img.message}</p>
           )}
         </div>
+        <input name="email" type="email" defaultValue={user?.email} disabled placeholder="Email Address" className="input input-bordered w-full mt-3 mb-3" />
           <div className="form-control w-full max-w-xs">
             <label className="label">
               <span className="label-text">Category</span>

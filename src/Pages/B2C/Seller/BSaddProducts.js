@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const BSaddProducts = () => {
     const {
@@ -7,7 +8,10 @@ const BSaddProducts = () => {
         formState: { errors },
         handleSubmit,
       } = useForm();
+      const {user} = useContext(AuthContext);
       const imageHostkey = process.env.REACT_APP_imgbb_key;
+
+      const  navigate =
       const handleAddProducts = (data) => {
         console.log(data);
         const image = data.img[0];
@@ -23,6 +27,15 @@ const BSaddProducts = () => {
             // console.log(imgData);
             if(imgData.success){
                 console.log(imgData.data.url);
+                const b2cproduct ={
+                  p_details: data.ProductDetails,
+                  p_price: data.price,
+                  p_quantity:data.quantity,
+                  p_category: data.category,
+                  image:imgData.data.url,
+                  email:user?.email
+
+                }
             }
         })
       };

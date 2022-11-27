@@ -28,6 +28,7 @@ import BMyOffers from "../../Pages/B2C/Buyer/BMyOffers"
 import LikedShop from "../../Pages/B2C/Buyer/LikedShop"
 import BMyOrder from "../../Pages/B2C/Buyer/BMyOrder"
 import B2cBuyerRoute from "../B2cBuyerRoute"
+import BAllProducrs from "../../Pages/B2B/BAllProducrs";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -88,6 +89,10 @@ const router = createBrowserRouter([
                 element:<B2bRoute><CustomerOrder></CustomerOrder></B2bRoute>
             },
             {
+                path:'/dashboard/b2bProducts',
+                element:<B2bRoute><BAllProducrs></BAllProducrs></B2bRoute>
+            },
+            {
                 path:'/dashboard/b2bmyShop',
                 element:<B2bRoute><MyShop></MyShop></B2bRoute>
             },
@@ -126,7 +131,7 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/b2cbuyerMyoffers',
                 element:<B2cBuyerRoute><BMyOffers></BMyOffers></B2cBuyerRoute>
-            },
+            }
         ]
     },
     {
