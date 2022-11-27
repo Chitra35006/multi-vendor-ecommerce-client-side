@@ -9,7 +9,7 @@ const AllProducts = () => {
     const [b2cProducts,setb2cProduct] = useState ([]);
     const [cart,setCart] = useState([])
     useEffect(()=>{
-      fetch('http://localhost:5000/b2cProducts')
+      fetch('https://y-alpha-six.vercel.app/b2cProducts')
       .then(res=>res.json())
       .then(data => setb2cProduct(data))
     },[]);

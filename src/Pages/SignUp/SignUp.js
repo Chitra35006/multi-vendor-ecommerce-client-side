@@ -49,7 +49,7 @@ const SignUp = () => {
 
     const saveUser = (email,name,account)=>{
        const user ={email,name,account};
-       fetch('http://localhost:5000/users',{
+       fetch('https://y-alpha-six.vercel.app/users',{
         method: 'POST',
         headers:{
           'content-type': 'application/json',

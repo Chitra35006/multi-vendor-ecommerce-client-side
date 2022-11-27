@@ -8,7 +8,7 @@ const BAllProducrs = () => {
         queryKe: ["b2bProducts "],
         queryFn: async () => {
           try {
-            const res = await fetch("http://localhost:5000/b2bProducts", {
+            const res = await fetch("https://y-alpha-six.vercel.app/b2bProducts", {
               headers: {
                 authorization: `bearer ${localStorage.getItem("accessToken")}`,
               },

@@ -5,7 +5,7 @@ const useB2cBuyer = email => {
    const [isB2CbuyerLoading, setisB2CbuyerLoading] = useState(true);
    useEffect(()=>{
     if(email){
-        fetch(`http://localhost:5000/users/b2cb/${email}`)
+        fetch(`https://y-alpha-six.vercel.app/users/b2cb/${email}`)
         .then(res => res.json())
         .then(data =>{
            console.log(data);

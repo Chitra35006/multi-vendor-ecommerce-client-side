@@ -38,7 +38,7 @@ const BSaddProducts = () => {
                 }
                 
                 //product information to the database
-                fetch('http://localhost:5000/b2cProducts',{
+                fetch('https://y-alpha-six.vercel.app/b2cProducts',{
                   method: 'POST',
                   headers:{
                       'content-type': 'application/json',

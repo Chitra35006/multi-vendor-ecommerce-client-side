@@ -6,7 +6,7 @@ const Shoe = () => {
     const { data: shoes = []} = useQuery({
         queryKey: ["shoes"],
         queryFn: async () => {
-          const res = await fetch("http://localhost:5000/b2bProducts/shoe");
+          const res = await fetch("https://y-alpha-six.vercel.app/b2bProducts/shoe");
           const data = await res.json();
           return data;
         },
