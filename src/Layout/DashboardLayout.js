@@ -2,12 +2,19 @@ import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { AuthContext } from '../Contexts/AuthProvider';
 import useAdmin from '../Hooks/useAdmin';
+import useB2B from '../Hooks/useB2B';
+import useB2cBuyer from '../Hooks/useB2cBuyer';
+import useB2cSeller from '../Hooks/useB2cSeller';
+
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 
 
 const DashBoardLayout = () => {
     const{user} = useContext(AuthContext);
     const [isAdmin] = useAdmin(user?.email)
+    const[isB2Buser] = useB2B(user?.email)
+   const[isB2Cseller] = useB2cSeller(user?.email)
+    const[isB2Cbuyer] = useB2cBuyer(user?.email)
     return (
         <div>
       <Navbar></Navbar>
@@ -45,6 +52,8 @@ const DashBoardLayout = () => {
 
                 
                 {/* b2busers */}
+                {
+                    isB2Buser && <>
                 <li>
                 <Link to='/dashboard/b2bMyorder'>My Orders</Link>
                 </li>
@@ -57,32 +66,49 @@ const DashBoardLayout = () => {
                  <li>
                 <Link to='/dashboard/b2bmyShop'>My Shop</Link>
                 </li>
+                 <li>
+                <Link to='/dashboard/b2bmyprofile'>My Profile</Link>
+                </li>
+                    </>
+                }
                 
 
 
                 {/* b2c seller */}
+                {
+                    isB2Cseller && <>
                 <li>
-                <Link to='/dashboard/b2cCustomerOrders'>Customer Order</Link>
+                <Link to='/dashboard/b2csellerCustomerOrders'>Customer Order</Link>
                 </li>
                 <li>
-                <Link to='/dashboard/b2cAddProducts'>Add Product</Link>
+                <Link to='/dashboard/b2csellerAddProducts'>Add Product</Link>
                 </li>
                  <li>
-                <Link to='/dashboard/b2cMyShop'>My Shop</Link>
+                <Link to='/dashboard/b2csellerMyShop'>My Shop</Link>
                 </li>
+                 <li>
+                <Link to='/dashboard/b2csellerMyProfile'>My Profile</Link>
+                </li>
+                    </>
+                }
 
                 {/* b2c buyer */}
-                <li>
-                <Link to='/dashboard/b2cMyOrders'>My Order</Link>
+               {
+                isB2Cbuyer && <>
+                 <li>
+                <Link to='/dashboard/b2cbuyerMyOrders'>My Order</Link>
                 </li>
                 <li>
-                <Link to='/dashboard/b2cLikedshop'>Liked Shop</Link>
+                <Link to='/dashboard/b2cbuyerLikedshop'>Liked Shop</Link>
                 </li>
                  <li>
-                <Link to='/dashboard/b2cMyoffers'>My Offers</Link>
+                <Link to='/dashboard/b2cbuyerMyoffers'>My Offers</Link>
                 </li>
-
-
+                 <li>
+                <Link to='/dashboard/b2cbuyerMyProfile'>My Profile</Link>
+                </li>
+                </>
+               }
 
             </ul>
             </div>
