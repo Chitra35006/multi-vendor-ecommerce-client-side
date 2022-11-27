@@ -1,40 +1,55 @@
-import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+
+import React, { useEffect, useState } from 'react';
 import AllProducts2 from './AllProducts2';
-import Loading from '../../Shared/Loading';
 import './AllProducts.css'
+import Cart from './Cart';
+import { addToDb, getStoredCart } from './fakeDb';
 
 const AllProducts = () => {
-    const { data: b2cProducts,isLoading } = useQuery({
-        queryKe: ["b2cProducts "],
-        queryFn: async () => {
-          try {
-            const res = await fetch("http://localhost:5000/b2cProducts", {
-              headers: {
-                authorization: `bearer ${localStorage.getItem("accessToken")}`,
-              },
-            });
-            const data = await res.json();
-            return data;
-          } catch (error) {}
-        },
-      })
-      
-      if (isLoading) {
-        return <Loading></Loading>;
+    const [b2cProducts,setb2cProduct] = useState ([]);
+    const [cart,setCart] = useState([])
+    useEffect(()=>{
+      fetch('http://localhost:5000/b2cProducts')
+      .then(res=>res.json())
+      .then(data => setb2cProduct(data))
+    },[]);
+
+
+    useEffect(()=>{
+      const storedCart = getStoredCart();
+      for(const id in storedCart){
+        const addedProduct = b2cProducts.find(b2cProduct=>b2cProduct._id ===id);
+        // console.log(addedProduct);
+        if(addedProduct){
+          
+        }
       }
+    },[b2cProducts])
+
+    const handleAddTocartClick = (b2cProduct) =>{
+      console.log(b2cProduct);
+      const newCart = [...cart,b2cProduct];
+      setCart(newCart);
+      addToDb(b2cProduct._id);
+    }
+
+     
       return (
-        <div>
-          <div>
+        <div className='shop-container'>
+          <div className='products-container'>
             <h2 className="mt-5"> Total Products : {b2cProducts?.length}</h2>
           </div>
-         <div className=" mt-product-div grid lg:grid-cols-2 md:grid-cols-2 gap-3  grid-cols-1">
+         <div className=" mt-product-div grid lg:grid-cols-2 md:grid-cols-1 gap-3  grid-cols-1">
             {
                 b2cProducts.map(b2cProduct =><AllProducts2
                     key={b2cProduct._id}
                     b2cProduct={b2cProduct}
+                    handleAddTocartClick={handleAddTocartClick}
                 ></AllProducts2> )
             }
+         </div>
+         <div className='cart-container'>
+            <Cart cart={cart}></Cart>
          </div>
         </div>
       );

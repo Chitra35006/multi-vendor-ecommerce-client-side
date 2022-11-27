@@ -2,3 +2,9 @@
     height: 300px;
     
 }
+.cart-container{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: rgb(181, 229, 213);
+    padding: 40px;
+}
