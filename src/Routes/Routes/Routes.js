@@ -30,6 +30,9 @@ import BMyOrder from "../../Pages/B2C/Buyer/BMyOrder"
 import B2cBuyerRoute from "../B2cBuyerRoute"
 import BAllProducrs from "../../Pages/B2B/BAllProducrs";
 import AllProducts from "../../Pages/B2C/Buyer/AllProducts";
+import Shoe from "../../Pages/B2B/Shoe";
+import Bag from "../../Pages/B2B/Bag";
+import Jackets from "../../Pages/B2B/Jackets";
 const router = createBrowserRouter([
     {
         path:'/',
@@ -96,6 +99,18 @@ const router = createBrowserRouter([
             {
                 path:'/dashboard/b2bmyShop',
                 element:<B2bRoute><MyShop></MyShop></B2bRoute>
+            },
+            {
+                path:'/dashboard/b2bProducts/shoes',
+                element:<B2bRoute><Shoe></Shoe></B2bRoute>
+            },
+            {
+                path:'/dashboard/b2bProducts/bags',
+                element:<B2bRoute><Bag></Bag></B2bRoute>
+            },
+            {
+                path:'/dashboard/b2bProducts/jackets',
+                element:<B2bRoute><Jackets></Jackets></B2bRoute>
             },
             {
                 path:'/dashboard/b2bmyprofile',
