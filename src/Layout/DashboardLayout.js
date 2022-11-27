@@ -29,7 +29,7 @@ const DashBoardLayout = () => {
             <ul className="menu p-4 w-80 text-base-content">
                 {/* <!-- Sidebar content here --> */}
                 <li>
-                <Link to='/dashboard'>Add Offer</Link>
+                <Link to='/dashboard'>Setting</Link>
                 </li>
 
                 {/* //admin */}
@@ -112,9 +112,6 @@ const DashBoardLayout = () => {
                 </li>
                 <li>
                 <Link to='/dashboard/b2cbuyerLikedshop'>Liked Shop</Link>
-                </li>
-                 <li>
-                <Link to='/dashboard/b2cbuyerMyoffers'>My Offers</Link>
                 </li>
                  <li>
                 <Link to='/dashboard/b2cbuyerMyProfile'>My Profile</Link>

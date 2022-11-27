@@ -25,6 +25,7 @@ const Navbar = () => {
         <li>
         <Link to="/dashboard">Dashboard</Link>
       </li>
+        <li className="flex justify-center items-center text-rose-400">Hello, {user?.displayName}</li>
         <li>
         <button onClick={handleLogout}>Sign Out</button>
       </li>
